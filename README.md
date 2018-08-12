@@ -1,2 +1,2 @@
 # effectiveweb.training
-Repository for Effective Web Online Course / airhacks.io
+Repository for effectiveweb.training / member of airhacks.io
