@@ -30,3 +30,6 @@ footer{
     grid-area: footer;
     background: lightgreen;
 }
+a{
+    display:block;
+}
