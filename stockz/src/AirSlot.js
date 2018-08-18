@@ -5,7 +5,12 @@ export default class AirSlot extends HTMLElement{
     }
 
     connectedCallback() { 
-        console.log('air slot is loaded');
+        document.addEventListener('air-nav',e => this.onNavigation(e));
+    }
+
+    onNavigation(evt) { 
+        const { detail } = evt;
+        console.log(detail);
     }
 
 }
