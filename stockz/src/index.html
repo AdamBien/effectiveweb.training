@@ -14,19 +14,21 @@
     </header>
     <nav>
       <a href="#out">out</a>
-      <air-nav>
+      <air-nav activeLinkClass="a-link">
         <a href="#first">first</a>
         <a href="#second">second</a>
       </air-nav>
     </nav>
     <article>
+      <air-slot>
       welcome
+    </air-slot>
     </article>
     <footer>
       <small>copyright airhacks.io 2018</small>
     </footer>
   </main>
-  <script src="app.js"></script>
+  <script src="app.js" type="module"></script>
 </body>
 
 </html>

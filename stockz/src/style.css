@@ -34,7 +34,11 @@ a{
     display:block;
 }
 
-.active-link{
-    background: lightseagreen;
+.a-link{
+    background: lightgray;
     padding: 1em;
+}
+
+.active-link{
+    background: lightpink;
 }
