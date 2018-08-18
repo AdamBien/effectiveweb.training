@@ -1,6 +1,7 @@
 class AirNav extends HTMLElement { 
     constructor() { 
         super();
+        this.activeLink = null;
     }
 
     connectedCallback() { 
@@ -14,10 +15,16 @@ class AirNav extends HTMLElement {
     }
 
     onLinkClicked(evt) { 
+        const { target } = evt;
+        if (this.activeLink) { 
+            this.activeLink.classList.toggle('active-link');
+        }
+        this.activeLink = target;
+        this.activeLink.classList.toggle('active-link');
         evt.preventDefault();
         const event = new CustomEvent('air-nav', {
             detail: {
-                uri: evt.target.href
+                uri: target.href
             },
             bubbles:true
 
