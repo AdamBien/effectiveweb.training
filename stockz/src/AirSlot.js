@@ -4,6 +4,7 @@ export default class AirSlot extends HTMLElement{
 
     constructor(){ 
         super();
+        this.oldChild = null;
     }
 
     connectedCallback() { 
@@ -18,14 +19,22 @@ export default class AirSlot extends HTMLElement{
 
         console.log(href, linkName, text);
 
+        let newChild = null;
+
         if (linkName === 'add') { 
-            const view = new AddStock();
-            this.appendChild(view);
+            newChild = new AddStock();
         }
         if (linkName === 'list') { 
-            const view = new ListStocks();
-            this.appendChild(view);
+            newChild = new ListStocks();
         }
+
+        if (this.oldChild) {
+            this.replaceChild(newChild, this.oldChild);
+        } else { 
+            this.appendChild(newChild);
+        }
+
+        this.oldChild = newChild;
      }
 
 }
