@@ -40,5 +40,3 @@ export default class AirNav extends HTMLElement {
 }
 
 customElements.define('air-nav', AirNav);
-
-document.body.addEventListener('air-nav',e => console.log(e.detail.uri));
