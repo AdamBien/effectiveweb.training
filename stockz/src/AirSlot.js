@@ -5,9 +5,17 @@ export default class AirSlot extends HTMLElement{
     constructor(){ 
         super();
         this.oldChild = null;
+        this.root = this.attachShadow({mode:'open'});
     }
 
     connectedCallback() { 
+        this.root.innerHTML = `
+        <slot name="header">HEADER</slot>
+        <slot name="view">VIEW</slot>
+        <slot name="footer">AFTER</slot>
+
+        `;
+        this.oldChild = this.root.querySelector("[name=view]");
         document.addEventListener('air-nav',e => this.onNavigation(e));
     }
 
@@ -29,9 +37,9 @@ export default class AirSlot extends HTMLElement{
         }
 
         if (this.oldChild) {
-            this.replaceChild(newChild, this.oldChild);
+            this.root.replaceChild(newChild, this.oldChild);
         } else { 
-            this.appendChild(newChild);
+            this.root.appendChild(newChild);
         }
 
         this.oldChild = newChild;
