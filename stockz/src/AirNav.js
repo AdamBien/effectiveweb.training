@@ -32,6 +32,8 @@ export default class AirNav extends HTMLElement {
 
         });
         this.dispatchEvent(event);
+        const element = this.querySelector(`[href="${hash}"]`);
+        this.onLinkClicked({target: element});
         
     }
 
