@@ -1,4 +1,4 @@
-export default class AddStock extends HTMLElement { 
+export default class AddView extends HTMLElement { 
     constructor() { 
         super();
     }
@@ -12,4 +12,4 @@ export default class AddStock extends HTMLElement {
 
 }
 
-customElements.define('add-stock',AddStock);
+customElements.define('add-view',AddView);

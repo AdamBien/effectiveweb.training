@@ -1,4 +1,4 @@
-export default class ListStocks extends HTMLElement { 
+export default class ListView extends HTMLElement { 
 
     constructor() { 
         super();
@@ -20,4 +20,4 @@ export default class ListStocks extends HTMLElement {
 
 }
 
-customElements.define('list-stocks',ListStocks);
+customElements.define('list-view',ListView);
