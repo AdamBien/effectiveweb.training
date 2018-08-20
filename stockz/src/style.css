@@ -1,3 +1,6 @@
+*{
+    --air-brown: lightsalmon;
+}
 body{
     padding: 0px;
     margin: 0px;
@@ -15,7 +18,7 @@ main{
 
 header{
     grid-area: header;
-    background:lightsalmon;
+    background:var(--air-brown,blue);
 }
 nav{
     grid-area: nav;
