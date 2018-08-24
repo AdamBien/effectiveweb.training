@@ -10,9 +10,15 @@ context('navigation', () => {
                 click().should("have.class", "a-link");
             cy.get('air-crumb').should('contain', view);
             cy.get('air-slot').then(ref => { 
-                const { currentView } = ref[0];
-                console.log(currentView);
-                expect(currentView).to.eq(view);
+                cy.window().then((win) => { 
+                    win.customElements.whenDefined('air-slot').
+                        then(() => {
+                            const { currentView } = ref[0];
+                            console.log("Upgraded->",currentView);
+                            expect(currentView).to.eq(view);
+            
+                    });
+                });
             });
         });
     
