@@ -10,4 +10,9 @@ export default class Stocks {
         const stringified = JSON.stringify(stock);
         localStorage.setItem(name,stringified);
     }
+
+    static get(name) { 
+        const stringified = localStorage.getItem(name);
+        return JSON.parse(stringified);
+    }
 }
