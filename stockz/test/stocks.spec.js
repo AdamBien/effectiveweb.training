@@ -7,7 +7,15 @@ context("Stocks", () => {
 
 
     it('add', () => {
-        Stocks.add('sun',42,2);
+        const key = 'sun';
+        Stocks.add(key, 42, 2);
+        
+        const stringified = localStorage.getItem(key);
+        const stock = JSON.parse(stringified);
+        const { name, price, amount } = stock;
+        expect(name).to.eq(key);
+        expect(price).to.eq(42);
+        expect(amount).to.eq(1);
     });
 
 });
