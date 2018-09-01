@@ -8,6 +8,18 @@ export default class AddView extends HTMLElement {
 
     connectedCallback() { 
         this.root.innerHTML = `
+        <style>
+        form{
+            width: 80%;
+        }
+        label{
+            display:flex;
+            justify-content: space-between;
+        }
+        input[type="number"]{
+            width: 3em;
+        }
+        </style>
           <form>
             <fieldset>
             <legend>add stock</legend>
