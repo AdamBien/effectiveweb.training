@@ -8,22 +8,27 @@ export default class Stocks {
             amount
         };
         const stringified = JSON.stringify(stock);
-        localStorage.setItem(name,stringified);
+        localStorage.setItem(`stockz.${name}`,stringified);
     }
 
-    static get(name) { 
+    static getWithoutPrefix(name) { 
         const stringified = localStorage.getItem(name);
         return JSON.parse(stringified);
     }
 
+    static get(name) { 
+        return Stocks.getWithoutPrefix(`stockz.${name}`);
+    }
+
     static remove(name) { 
-        localStorage.removeItem(name);
+        localStorage.removeItem(`stockz.${name}`);
     }
 
     static all() { 
         const all = { ...localStorage };
         return Object.keys(all).
-            map(key => Stocks.get(key));
+            filter(key => key.startsWith('stockz.')).
+            map(key => Stocks.getWithoutPrefix(key));
 
     }
 }

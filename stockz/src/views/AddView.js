@@ -23,7 +23,8 @@ export default class AddView extends HTMLElement {
         const name = this.nameInput.value;
         const price = this.priceInput.value;
         const amount = this.amountInput.value;
-        Stocks.add(name,price,amount);
+        Stocks.add(name, price, amount);
+        console.log(Stocks.all());
     }
 
 }
