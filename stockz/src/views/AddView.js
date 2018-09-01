@@ -8,18 +8,31 @@ export default class AddView extends HTMLElement {
 
     connectedCallback() { 
         this.root.innerHTML = `
-            <input id="name" placeholder="name"/>
-            <input id="price" placeholder="price"/>
-            <input id="amount" placeholder="amount"/>
-            <button>add</button>
+          <form>
+            <fieldset>
+            <legend>add stock</legend>
+            <label for="name">name:
+            <input id="name" required placeholder="name"/>
+            </label>
+            <label for="price">price:
+            <input id="price" required type="number" min="0" value="0" placeholder="price"/>
+            </label>
+            <label for="amount">amount:
+            <input id="amount" required type="number" min="1" placeholder="amount" value="1"/>
+            </label>
+            <input type="submit" value="add"/>
+            </fieldset>
+        </form>
         `;
         this.nameInput = this.root.querySelector('#name');
         this.priceInput = this.root.querySelector('#price');
         this.amountInput = this.root.querySelector('#amount');
-        this.root.querySelector('button').onclick = _ => this.addStock();
+        this.root.querySelector('form').onsubmit = e => this.addStock(e);
     }
 
-    addStock() { 
+    addStock(event) { 
+        event.preventDefault();
+        console.log(event);
         const name = this.nameInput.value;
         const price = this.priceInput.value;
         const amount = this.amountInput.value;
