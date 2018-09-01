@@ -6,22 +6,29 @@ context("Stocks", () => {
     });
 
 
-    it('add_get_remove_all', () => {
+    it('crud', () => {
         const key = 'sun';
         Stocks.add(key, 42, 2);
-        
-        const { name, price, amount } = Stocks.get(key);
+        const stock = Stocks.get(key);
+        const { name, price, amount } = stock;
         expect(name).to.eq(key);
         expect(price).to.eq(42);
         expect(amount).to.eq(2);
 
         const all = Stocks.all();
-        console.dir(all[0].price);
+        expect(all).to.be.an('array');
+        expect(all).to.include(stock);
+        expect(all).not.to.be.empty;
 
         Stocks.remove(key);
 
         const shouldNotExist = Stocks.get(key);
         expect(shouldNotExist).to.be.null;
+
+        const shouldBeEmpty = Stocks.all();
+        expect(shouldBeEmpty.length).to.eq(0);
+        expect(shouldBeEmpty).to.be.empty;
+
     });
 
 });
