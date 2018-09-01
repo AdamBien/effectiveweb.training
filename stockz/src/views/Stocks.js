@@ -21,6 +21,9 @@ export default class Stocks {
     }
 
     static all() { 
-        return { ...localStorage };
+        const all = { ...localStorage };
+        return Object.keys(all).
+            map(key => Stocks.get(key));
+
     }
 }

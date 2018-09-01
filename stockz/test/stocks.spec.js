@@ -16,7 +16,7 @@ context("Stocks", () => {
         expect(amount).to.eq(2);
 
         const all = Stocks.all();
-        console.dir(all);
+        console.dir(all[0].price);
 
         Stocks.remove(key);
 
