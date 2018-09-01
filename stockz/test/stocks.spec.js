@@ -14,6 +14,11 @@ context("Stocks", () => {
         expect(name).to.eq(key);
         expect(price).to.eq(42);
         expect(amount).to.eq(2);
+
+        Stocks.remove(key);
+
+        const shouldNotExist = Stocks.get(key);
+        expect(shouldNotExist).to.be.null;
     });
 
 });

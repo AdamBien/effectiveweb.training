@@ -15,4 +15,8 @@ export default class Stocks {
         const stringified = localStorage.getItem(name);
         return JSON.parse(stringified);
     }
+
+    static remove(name) { 
+        localStorage.removeItem(name);
+    }
 }
