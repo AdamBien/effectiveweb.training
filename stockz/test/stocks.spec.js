@@ -6,7 +6,7 @@ context("Stocks", () => {
     });
 
 
-    it('add_get', () => {
+    it('add_get_remove_all', () => {
         const key = 'sun';
         Stocks.add(key, 42, 2);
         
@@ -14,6 +14,9 @@ context("Stocks", () => {
         expect(name).to.eq(key);
         expect(price).to.eq(42);
         expect(amount).to.eq(2);
+
+        const all = Stocks.all();
+        console.dir(all);
 
         Stocks.remove(key);
 

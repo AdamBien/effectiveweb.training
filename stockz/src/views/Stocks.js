@@ -19,4 +19,8 @@ export default class Stocks {
     static remove(name) { 
         localStorage.removeItem(name);
     }
+
+    static all() { 
+        return { ...localStorage };
+    }
 }
