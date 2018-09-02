@@ -3,6 +3,7 @@ export default class ListView extends HTMLElement {
 
     constructor() { 
         super();
+        this.root = this.attachShadow({mode:'open'});
     }
 
     connectedCallback() { 
@@ -11,7 +12,7 @@ export default class ListView extends HTMLElement {
     }
 
     render() { 
-        this.innerHTML = `
+        this.root.innerHTML = `
         <style>
          header{
              background: var(--air-brown, red);
@@ -21,7 +22,8 @@ export default class ListView extends HTMLElement {
             <h2>the stocks</h2>
             </header>
             ${this.table()}
-        `
+        `;
+        this.root.querySelectorAll('button').forEach(button => button.onclick = e => this.removeStock(e));
     }
     table() { 
         return `
@@ -47,9 +49,13 @@ export default class ListView extends HTMLElement {
     row({name,price,amount}) { 
         return `
         <tr>
-        <td>${name}</td><td>${price}</td><td>${amount}</td>
+        <td>${name}</td><td>${price}</td><td>${amount}</td><td><button id="${name}">remove</button></td>
         </tr>
         `;
+    }
+
+    removeStock({ target }) { 
+        Stocks.remove(target.id);
     }
 
 
