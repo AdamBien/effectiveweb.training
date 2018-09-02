@@ -8,7 +8,8 @@ export default class Stocks {
             amount
         };
         const stringified = JSON.stringify(stock);
-        localStorage.setItem(`stockz.${name}`,stringified);
+        localStorage.setItem(`stockz.${name}`, stringified);
+        Stocks.stocksChanged('add',name);
     }
 
     static getWithoutPrefix(name) { 
@@ -22,6 +23,7 @@ export default class Stocks {
 
     static remove(name) { 
         localStorage.removeItem(`stockz.${name}`);
+        Stocks.stocksChanged('remove',name);
     }
 
     static all() { 
@@ -29,6 +31,16 @@ export default class Stocks {
         return Object.keys(all).
             filter(key => key.startsWith('stockz.')).
             map(key => Stocks.getWithoutPrefix(key));
+    }
 
+    static stocksChanged(type,name) { 
+        const changeEvent = new CustomEvent('air-stocks', {
+            detail: {
+                type,
+                name
+            },
+            bubbles: true
+        });
+        document.dispatchEvent(changeEvent);
     }
 }
