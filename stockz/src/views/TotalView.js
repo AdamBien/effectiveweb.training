@@ -5,7 +5,15 @@ export default class TotalView extends HTMLElement {
     }
 
     connectedCallback() { 
-        this.innerHTML = `total: ${Stocks.total()} units`;
+        addEventListener('air-stocks', _ => this.render());
+        this.render();
+    }
+
+    render() { 
+        this.innerHTML = `
+        <output>
+            total: ${Stocks.total()} units
+        </output>`;
     }
 
 }
