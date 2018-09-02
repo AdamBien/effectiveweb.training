@@ -43,4 +43,11 @@ export default class Stocks {
         });
         document.dispatchEvent(changeEvent);
     }
+
+    static total() { 
+        return Stocks.
+            all().
+            map(stock => (stock.price * stock.amount)).
+            reduce((p, c) => p + c);
+    }
 }

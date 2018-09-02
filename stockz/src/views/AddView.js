@@ -25,7 +25,7 @@ export default class AddView extends HTMLElement {
             <fieldset>
             <legend>add stock</legend>
             <label for="name">name:
-            <input id="name" required placeholder="name"/>
+            <input id="name" required autocomplete="off" placeholder="name"/>
             </label>
             <label for="price">price:
             <input id="price" required type="number" min="0" value="0" placeholder="price"/>
