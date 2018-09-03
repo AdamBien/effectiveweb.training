@@ -30,7 +30,7 @@ export default class ListView extends HTMLElement {
         <table>
         <thead>
         <tr>
-        <th>name</th><th>price</th><th>amount</th>
+        <th>name</th><th>price</th><th>amount</th><th>total</th>
         </tr>
         </thead>
         <tbody>
@@ -46,10 +46,10 @@ export default class ListView extends HTMLElement {
             reduce((p, c) => p + c);
     }
 
-    row({name,price,amount}) { 
+    row({name,price,amount,total}) { 
         return `
         <tr>
-        <td>${name}</td><td>${price}</td><td>${amount}</td><td><button id="${name}">remove</button></td>
+        <td>${name}</td><td>${price}</td><td>${amount}</td><td>${total}</td><td><button id="${name}">remove</button></td>
         </tr>
         `;
     }

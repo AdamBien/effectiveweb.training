@@ -26,11 +26,19 @@ export default class Stocks {
         Stocks.stocksChanged('remove',name);
     }
 
+    static priceTotal({ price,amount }) { 
+        return price * amount;
+    }
+
     static all() { 
         const all = { ...localStorage };
         return Object.keys(all).
             filter(key => key.startsWith('stockz.')).
-            map(key => Stocks.getWithoutPrefix(key));
+            map(key => Stocks.getWithoutPrefix(key)).
+            map(stock => { 
+                stock.total = Stocks.priceTotal(stock);
+                return stock;
+            });
     }
 
     static stocksChanged(type,name) { 
@@ -47,7 +55,7 @@ export default class Stocks {
     static total() { 
         return Stocks.
             all().
-            map(stock => (stock.price * stock.amount)).
+            map(stock => Stocks.priceTotal(stock)).
             reduce((p, c) => p + c);
     }
 }
