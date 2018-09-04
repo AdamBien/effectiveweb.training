@@ -1,3 +1,8 @@
+const escape = (strings, ...keys) => { 
+    console.log("strings", strings);
+    console.log("keys", keys);
+    return strings + keys;
+}
 import Stocks from './Stocks.js';
 export default class ListView extends HTMLElement { 
 
@@ -47,7 +52,7 @@ export default class ListView extends HTMLElement {
     }
 
     row({name,price,amount,total}) { 
-        return `
+        return escape`
         <tr>
         <td>${name}</td><td>${price}</td><td>${amount}</td><td>${total}</td><td><button id="${name}">remove</button></td>
         </tr>
