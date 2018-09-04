@@ -1,8 +1,10 @@
-const escape = (strings, ...keys) => { 
-    console.log("strings", strings);
-    console.log("keys", keys);
-    return strings + keys;
+const escape = (strings, ...value) => { 
+    return strings.
+        map((string, index) =>
+            string + (value[index] || '')).
+        join('\n');
 }
+import { html, render } from './../lit-html/lit-html.js';
 import Stocks from './Stocks.js';
 export default class ListView extends HTMLElement { 
 
@@ -17,7 +19,7 @@ export default class ListView extends HTMLElement {
     }
 
     render() { 
-        this.root.innerHTML = `
+        const template  = html`
         <style>
          header{
              background: var(--air-brown, red);
@@ -28,10 +30,11 @@ export default class ListView extends HTMLElement {
             </header>
             ${this.table()}
         `;
+        render(template, this.root);
         this.root.querySelectorAll('button').forEach(button => button.onclick = e => this.removeStock(e));
     }
     table() { 
-        return `
+        return html`
         <table>
         <thead>
         <tr>
@@ -47,12 +50,12 @@ export default class ListView extends HTMLElement {
 
     content() { 
         return Stocks.all().
-            map(stock => this.row(stock)).
-            reduce((p, c) => p + c);
+            map(stock => this.row(stock));
+            
     }
 
     row({name,price,amount,total}) { 
-        return escape`
+        return html`
         <tr>
         <td>${name}</td><td>${price}</td><td>${amount}</td><td>${total}</td><td><button id="${name}">remove</button></td>
         </tr>
