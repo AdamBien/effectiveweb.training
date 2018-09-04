@@ -15,7 +15,7 @@ export default class ListView extends HTMLElement {
     render() {
         const row = ({name,price,amount,total}) => html`
         <tr>
-          <td>${name}</td><td>${price}</td><td>${amount}</td><td>${total}</td><td><button id="${name}">remove</button></td>
+          <td>${name}</td><td>${price}</td><td>${amount}</td><td>${total}</td><td><button id="${name}" @click=${(e) => this.removeStock(e)}>remove</button></td>
         </tr>
         `;
 
@@ -40,7 +40,6 @@ export default class ListView extends HTMLElement {
             </table>
         `;
         render(template, this.root);
-        this.root.querySelectorAll('button').forEach(button => button.onclick = e => this.removeStock(e));
     }
 
     removeStock({ target }) {
