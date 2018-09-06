@@ -1,25 +1,19 @@
 import {html,render } from './../lit-html/lit-html.js';
 import Stocks from './Stocks.js';
-export default class ListView extends HTMLElement {
+import AirElement from './AirElements.js';
+export default class ListView extends AirElement {
 
     constructor() {
         super();
-        this.root = this.attachShadow({mode: 'open'});
     }
 
     connectedCallback() {
-        addEventListener('air-stocks', _ => this.render());
-        this.render();
+        addEventListener('air-stocks', _ => this.viewChanged());
+        this.viewChanged();
     }
 
-    render() {
-        const row = ({name,price,amount,total}) => html`
-        <tr>
-          <td>${name}</td><td>${price}</td><td>${amount}</td><td>${total}</td><td><button id="${name}" @click=${(e) => this.removeStock(e)}>remove</button></td>
-        </tr>
-        `;
-
-        const template = html `
+    createView() {
+        return html `
         <style>
          header{
              background: var(--air-brown, red);
@@ -35,11 +29,16 @@ export default class ListView extends HTMLElement {
                     </tr>
                 </thead>
                 <tbody>
-                    ${Stocks.all().map(stock => row(stock))}
+                    ${Stocks.all().map(({ name, price, amount, total }) => 
+                html`
+                    <tr>
+                    <td>${name}</td><td>${price}</td><td>${amount}</td><td>${total}</td><td><button id="${name}" @click=${(e) => this.removeStock(e)}>remove</button></td>
+                    </tr>
+                `
+                )}
                 </tbody>
             </table>
         `;
-        render(template, this.root);
     }
 
     removeStock({ target }) {

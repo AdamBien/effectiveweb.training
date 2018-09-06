@@ -1,16 +1,18 @@
 import Stocks from './Stocks.js';
-export default class TotalView extends HTMLElement { 
+import AirElement from './AirElements.js';
+import { html } from './../lit-html/lit-html.js';
+export default class TotalView extends AirElement { 
     constructor() { 
         super();
     }
 
     connectedCallback() { 
-        addEventListener('air-stocks', _ => this.render());
-        this.render();
+        addEventListener('air-stocks', _ => this.viewChanged());
+        this.viewChanged();
     }
 
-    render() { 
-        this.innerHTML = `
+    createView() { 
+        return html`
         <output>
             total: ${Stocks.total()} units
         </output>`;
