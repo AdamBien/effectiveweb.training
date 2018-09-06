@@ -1,15 +1,20 @@
 import Stocks from './Stocks.js';
 import ListView from './ListView.js';
 import { html, render } from './../lit-html/lit-html.js';
+import AirElement from './AirElements.js';
 
-export default class AddView extends HTMLElement { 
+export default class AddView extends AirElement { 
     constructor() { 
         super();
-        this.root = this.attachShadow({mode:'open'});
     }
 
     connectedCallback() { 
-        const template = html`
+        this.viewChanged();
+    }
+
+
+    createView() { 
+        return html`
         <style>
         form{
             width: 80%;
@@ -39,7 +44,6 @@ export default class AddView extends HTMLElement {
         </form>
         <list-view></list-view>
         `;
-        render(template,this.root);
     }
 
     addStock(event) { 
