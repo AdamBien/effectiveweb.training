@@ -1,5 +1,5 @@
 import Stocks from './Stocks.js';
-import AirElement from './AirElements.js';
+import AirElement from './AirElement.js';
 import { html } from './../lit-html/lit-html.js';
 export default class TotalView extends AirElement { 
     constructor() { 

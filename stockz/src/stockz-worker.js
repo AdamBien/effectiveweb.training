@@ -1,9 +1,8 @@
 
 
 const cacheName = 'stockz-cache';
-const resources = ['index.html','style.css','configuration.json','app.js','views/AboutView.js'];
-console.log('caches', caches);
-
+const views = ['AboutView', 'AddView', 'AirElement', 'ListView', 'Overview', 'Stocks', 'TotalView'].map(view => `views/${view}.js`);
+const resources = ['index.html','style.css','configuration.json','app.js'].concat(views);
 
 self.addEventListener('install', event =>
     event.waitUntil(caches.open(cacheName).

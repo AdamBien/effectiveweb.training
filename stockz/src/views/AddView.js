@@ -1,7 +1,7 @@
 import Stocks from './Stocks.js';
 import ListView from './ListView.js';
 import { html, render } from './../lit-html/lit-html.js';
-import AirElement from './AirElements.js';
+import AirElement from './AirElement.js';
 
 export default class AddView extends AirElement { 
     constructor() { 
