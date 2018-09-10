@@ -1,7 +1,7 @@
 
 
 const cacheName = 'stockz-cache';
-const resources = ['index.html','style.css','configuration.json','app.js','AirNav.js','AirSlot.js','views/AboutView.js'];
+const resources = ['index.html','style.css','configuration.json','app.js','views/AboutView.js'];
 console.log('caches', caches);
 
 
