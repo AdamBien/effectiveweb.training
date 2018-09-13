@@ -1,8 +1,6 @@
 
-
-const cacheName = 'stockz-cache-v0.0.3';
-const views = ['AboutView', 'AddView', 'AirElement', 'ListView', 'Overview', 'Stocks', 'TotalView'].map(view => `views/${view}.js`);
-const resources = ['index.html','style.css','configuration.json','app.js','d3/d3.js'].concat(views);
+const cacheName = 'stockz-cache-v0.0.4';
+const resources = ['index.html','style.css','app.js','d3/d3.js'];
 
 const prefetch = (name) => caches.open(name).then(cache => cache.addAll(resources));
 
