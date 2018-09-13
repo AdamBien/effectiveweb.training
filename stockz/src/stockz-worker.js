@@ -1,6 +1,6 @@
 
 
-const cacheName = 'stockz-cache';
+const cacheName = 'stockz-cache-v0.0.2';
 const views = ['AboutView', 'AddView', 'AirElement', 'ListView', 'Overview', 'Stocks', 'TotalView','chunk-e5d5374c'].map(view => `views/${view}.js`);
 const resources = ['index.html','style.css','configuration.json','app.js','d3/d3.js'].concat(views);
 
@@ -15,3 +15,9 @@ self.addEventListener('fetch', event => {
     event.respondWith(caches.match(request).
         then(response => (response || fetch(request))))
 });
+
+self.addEventListener('activate', event => { 
+    console.log('cleaning old caches');
+    const staleCaches = caches.keys().then(keys => keys.filter(key => key !== cacheName).map(stale => caches.delete(stale)));
+    event.waitUntil(staleCaches);
+})
