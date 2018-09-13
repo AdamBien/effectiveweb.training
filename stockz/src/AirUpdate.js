@@ -12,12 +12,14 @@ export default class AirUpdate extends AirElement {
 
     createView() { 
         return html`
-            <a href="#" @click=${e => this.update()}>update</a>
+            <a href="#" @click=${e => this.update(e)}>update</a>
         `;
     }
 
-    update() { 
+    update(e) { 
+        e.preventDefault();
         console.log('---updating??');
+        navigator.serviceWorker.controller.postMessage('update,please');
     }
 }
 customElements.define('air-update',AirUpdate);

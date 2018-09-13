@@ -1,12 +1,14 @@
 
 
-const cacheName = 'stockz-cache-v0.0.2';
-const views = ['AboutView', 'AddView', 'AirElement', 'ListView', 'Overview', 'Stocks', 'TotalView','chunk-e5d5374c'].map(view => `views/${view}.js`);
+const cacheName = 'stockz-cache-v0.0.3';
+const views = ['AboutView', 'AddView', 'AirElement', 'ListView', 'Overview', 'Stocks', 'TotalView'].map(view => `views/${view}.js`);
 const resources = ['index.html','style.css','configuration.json','app.js','d3/d3.js'].concat(views);
 
-self.addEventListener('install', event =>
+self.addEventListener('install', event => {
+    self.skipWaiting();
     event.waitUntil(caches.open(cacheName).
         then(cache => cache.addAll(resources)))
+}
 )
 
 self.addEventListener('fetch', event => {
@@ -18,6 +20,11 @@ self.addEventListener('fetch', event => {
 
 self.addEventListener('activate', event => { 
     console.log('cleaning old caches');
+    self.clients.claim();
     const staleCaches = caches.keys().then(keys => keys.filter(key => key !== cacheName).map(stale => caches.delete(stale)));
     event.waitUntil(staleCaches);
 })
+
+self.addEventListener('message', event => { 
+    console.log(event);
+});
