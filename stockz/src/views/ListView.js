@@ -5,11 +5,18 @@ export default class ListView extends AirElement {
 
     constructor() {
         super();
+        this.onViewChanged = _ => this.viewChanged();
+        this.listenerName = 'air-stocks';
     }
 
     connectedCallback() {
-        addEventListener('air-stocks', _ => this.viewChanged());
+        addEventListener(this.listenerName,this.onViewChanged() );
         this.viewChanged();
+    }
+
+    disconnectedCallback() { 
+        console.log('cleanup');
+        this.removeEventListener(this.listenerName,this.onViewChanged());
     }
 
     createView() {
