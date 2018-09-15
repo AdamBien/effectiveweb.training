@@ -15,10 +15,7 @@ export default class AirSlot extends HTMLElement{
 
     connectedCallback() { 
         this.root.innerHTML = `
-        <slot name="header">HEADER</slot>
         <slot name="view">VIEW</slot>
-        <slot name="footer">AFTER</slot>
-
         `;
         document.addEventListener('air-nav',e => this.onNavigation(e));
         this.oldChild = this.root.querySelector("[name=view]");
