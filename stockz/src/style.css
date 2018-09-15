@@ -1,5 +1,6 @@
 *{
-    --air-brown: lightsalmon;
+    --air-background:#fff;
+    font-family: sans-serif;
 }
 body{
     padding: 0px;
@@ -18,30 +19,41 @@ main{
 
 header{
     grid-area: header;
-    background:var(--air-brown,blue);
+    background:var(--air-background,#fff);
+    font-family: sans-serif;
 }
 nav{
     grid-area: nav;
-    background:lightcoral;
+    background:var(--air-background,#fff);
 }
 article{
     grid-area: article;
-    background: lightcyan;
+    background:var(--air-background,#fff);
 }
 
 footer{
     grid-area: footer;
-    background: lightgreen;
+    background:var(--air-background,#fff);
 }
 a{
     display:block;
+    text-decoration: none;
 }
 
+
 .a-link{
-    background: lightgray;
+    text-decoration: underline;
     padding: 1em;
 }
 
 .active-link{
     background: lightpink;
 }
+
+air-crumb,total-view{
+    font-size: 0.8em;
+}
+small{
+    font-size: 0.5em;
+}
+
