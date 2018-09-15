@@ -1,6 +1,6 @@
 
-const cacheName = 'stockz-cache-v0.0.4';
-const resources = ['index.html','style.css','app.js','d3/d3.js'];
+const cacheName = 'stockz-cache-v0.0.5';
+const resources = ['index.html','style.css','app.js','d3/d3.js','images/logo.svg'];
 
 const prefetch = (name) => caches.open(name).then(cache => cache.addAll(resources));
 

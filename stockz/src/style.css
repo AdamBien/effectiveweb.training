@@ -63,3 +63,8 @@ small{
     font-size: 0.5em;
 }
 
+img{
+    width: 80%;
+    height: auto;
+}
+

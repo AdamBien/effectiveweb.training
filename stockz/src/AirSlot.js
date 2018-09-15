@@ -15,6 +15,15 @@ export default class AirSlot extends HTMLElement{
 
     connectedCallback() { 
         this.root.innerHTML = `
+        <style>
+        slot[name="view"]{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        </style>
         <slot name="view">VIEW</slot>
         `;
         document.addEventListener('air-nav',e => this.onNavigation(e));
