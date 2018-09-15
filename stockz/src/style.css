@@ -22,6 +22,12 @@ header{
     background:var(--air-background,#fff);
     font-family: sans-serif;
 }
+
+header > section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 nav{
     grid-area: nav;
     background:var(--air-background,#fff);
