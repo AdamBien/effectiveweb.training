@@ -19,8 +19,17 @@ main{
 
 header{
     grid-area: header;
-    background:var(--air-background,#fff);
+    background:#202124;
     font-family: sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,.5);
+    margin-bottom: 0.3em;
+}
+
+header > h2{
+    color: #80868b;
+}
+air-crumb, total-view{
+    color: #fafafa;
 }
 
 header > section{
