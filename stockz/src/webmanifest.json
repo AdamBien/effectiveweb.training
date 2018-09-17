@@ -1,0 +1,21 @@
+{
+    "name": "stockz",
+    "short_name": "stockz",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Stocks Management App",
+    "icons": [{
+      "src": "images/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }, {
+      "src": "images/logo168.png",
+      "sizes": "168x168",
+      "type": "image/png"
+    }, {
+      "src": "images/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }]
+  }
